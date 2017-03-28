@@ -11,7 +11,3 @@ class ApiCommunicator
   end
 
 end
-
-retrieve = ApiCommunicator.new
-retrieve.get_data
-retrieve.arrange_data_by_borough
