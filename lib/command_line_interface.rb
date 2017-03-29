@@ -5,6 +5,7 @@ require_relative '../app/models/RatSighting.rb'
 require_relative '../app/models/User.rb'
 require 'pry'
 
+
 class GamePlay
 
   @@game_rat = RatSighting.get_random_rat
@@ -13,28 +14,45 @@ class GamePlay
   @@game_mastermind = Criminal.select_mastermind
   @@guess_counter = 1
 
-  def self.welcome
-    puts "Hello agent, please input your full name!"
+  def ascii
+         "      _..----.._    _
+              .'  .--.    "" (0)_
+  '-.__.-'"'=:|   ,  _)_ \__ . c\'-..o
+               ''''------''---''''---'
+  end
+
+  def welcome
+    puts "Hello agent, please input your first name!"
+    puts "#{ascii}"
+
   end
 
   def self.create_new_user
     input = gets.chomp
-    player = User.create(name: input, agent_name: "x")
-    puts "Hello, #{player.name}! Your codename is #{player.assign_agent_name}"
+    player = User.create
+    player.name = input.capitalize
+    player.assign_agent_name
+    player.save
+    puts "Hello, #{player.name}! Your codename is #{player.agent_name}..."
   end
 
   def self.mission_statement
+    puts "-----------------------------------------------------------------------"
     puts "A notorious criminal is posing as a rat in New York City! We've scraped the data from the
     latest 311 calls on rat sightings, so that we can uncover the culprit behind this mastermind scheme! Your job is to
     use the clues from a classified FBI database that we provide you to identify the villain masquerading as a mere NYC rat!"
+    puts "-----------------------------------------------------------------------"
   end
 
-  def self.options
-    puts "Type 'help' to see the rules of the game or 'start' to see the first rat!"
+  def options
+    puts "Type 'help' to see the rules, 'exit' to leave the game or 'start' to see the first rat!"
+    user_input = gets.chomp
     if user_input == 'help'
       help
     elsif user_input == 'start'
       start_game
+    elsif user_input == 'exit'
+      break
     else
       puts "I did not understand that command, agent! Please type 'help' or 'start'!"
       user_input
@@ -43,14 +61,15 @@ class GamePlay
   end
 
   def self.help
+    puts "-----------------------------------------------------------------------"
     puts "Pay attention, agent! Your job is to find the criminal that is masquerading as a rat! You will be given
     a list of suspects and a clue to help you narrow your search. You will be given four chances with a new clue each time
     to find the mastermind! If your deductive skills suffice to pinpoint the correct criminal, that criminal will be
     added to your casefile and you will forever be honored! If you are incorrect, the criminal will continue to run
     free and wreak havoc on the city! Each rat is being located in real-time through 311 calls from distraught citizens of New York
     City. You too can report potential criminals pretending to be rats."
+    puts "-----------------------------------------------------------------------"
   end
-
 
   def self.start_game
     puts "A rat has been spotted at #{@@game_rat.timestamp}. It's identifying itself as #{@@game_rat.pseudonym}. Here's a list of notorious criminals who are known to prowl this area. Uncover #{@@game_rat.pseudonym}'s true identity by guessing the clues correctly!"
