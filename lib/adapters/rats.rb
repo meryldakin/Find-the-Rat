@@ -25,21 +25,16 @@ class Adapter::Rats
     clear_rats_table
     counter = 0
     response = RestClient.get('https://data.cityofnewyork.us/resource/3q43-55fe.json')
-    data = JSON.parse(response)
+    data = JSON.parse(response)[0..40]
     data.each do |hash|
-      while counter < 40
       RatSighting.create(
         pseudonym: pseudonym,
         timestamp: hash["created_date"],
         location_type: hash["location_type"],
-        latitude: hash["location"]["latitude"],
-        longitude: hash["location"]["longitude"],
+        latitude: hash["latitude"],
+        longitude: hash["longitude"],
         borough: hash["borough"]
         )
-      counter += 1
-      binding.pry
-      end
-
     end
   end
 end
