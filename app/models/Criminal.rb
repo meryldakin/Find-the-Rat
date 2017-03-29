@@ -16,8 +16,6 @@ class Criminal < ActiveRecord::Base
     @@suspects.sample
   end
 
-  
-
   def self.clear_suspects
     @@suspects = []
   end

@@ -6,7 +6,8 @@ end
 
 def create_new_user
   input = gets.chomp
-  User.create(name: input, agent_name: "x")
+  player = User.create(name: input, agent_name: "x")
+  puts "Hello, #{player.name}! Your codename is #{player.assign_agent_name}"
 end
 
 def assign_agent_name
@@ -41,6 +42,7 @@ def help
   free and wreak havoc on the city! Each rat is being located in real-time through 311 calls from distraught citizens of New York
   City. You too can report potential criminals pretending to be rats."
 end
+
 
 def start_game
   game_rat = RatSighting.get_random_rat

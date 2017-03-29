@@ -6,5 +6,5 @@ gem "sqlite3"
 gem "pry"
 gem "require_all"
 gem "rest-client"
-gem 'random_name_generator'
+gem "random_name_generator"
 gem 'randumb'
