@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_many :criminals, through: :criminal_captures
   has_many :rat_sightings, through: :criminal_captures
 
-  attr_reader :agent_name
 
   def user_pseudonym
     rng = RandomNameGenerator.new(RandomNameGenerator::ROMAN)
@@ -12,7 +11,6 @@ class User < ActiveRecord::Base
 
   def assign_agent_name
     self.agent_name = user_pseudonym
-
   end
 
 end
