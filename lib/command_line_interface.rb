@@ -6,7 +6,8 @@ end
 
 def create_new_user
   input = gets.chomp
-  User.create(name: input, agent_name: "x")
+  player = User.create(name: input, agent_name: "x")
+  puts "Hello, #{player.name}! Your codename is #{player.assign_agent_name}"
 end
 
 def assign_agent_name
@@ -42,17 +43,12 @@ def help
   City. You too can report potential criminals pretending to be rats."
 end
 
-<<<<<<< HEAD
-welcome
-user_input
-assign_agent_name
-=======
+
 def start_game
   # a rat has been spotted at location on timestamp. It's identifying itself as (pseudonym).
   # Here are a list of notorious criminals who are known to prowl this area. Uncover (pseudonym)'s true identity!
 end
 
 def clue_1
-  
+
 end
->>>>>>> 0918d599c7298a7c01a1195aa354290e2d64e5d7
