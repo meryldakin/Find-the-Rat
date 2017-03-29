@@ -46,6 +46,5 @@ GAME FLOW
 3.28.17:
 Next steps:
 - Finish criminal database
-- Figure out how to seed with Rat data
+
 - Keep writing CLI for game play
-- Work out the random name generator
