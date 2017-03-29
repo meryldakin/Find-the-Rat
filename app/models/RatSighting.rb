@@ -1,29 +1,12 @@
 require 'random_name_generator'
-
+require 'pry'
 class RatSighting < ActiveRecord::Base
   has_many :criminal_captures
   has_many :users, through: :criminal_captures
   has_many :criminals, through: :criminal_captures
 
-
-  def pseudonym
-    rng = RandomNameGenerator.new(RandomNameGenerator::GOBLIN)
-    rng.compose(3)
+  def self.get_random_rat
+    RatSighting.order_by_rand.first
   end
-
-  def self.build_rat_table
-    ApiCommunicator.get_data.each_with_index do |hash, index|
-      while index < 40
-        hash.each do |key, value|
-          self.create()
-
-
-  end
-
-
-  def get_random_rat
-
-  end
-
 
 end
