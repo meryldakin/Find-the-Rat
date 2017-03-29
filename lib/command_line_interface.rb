@@ -43,12 +43,16 @@ def options
   elsif user_input == 'start'
     start_game
   elsif user_input == 'exit'
-    break
+    leave
   else
     puts "I did not understand that command, agent! Please type 'help' or 'start'!"
     user_input
     options
   end
+end
+
+def leave
+  puts "Goodbye!"
 end
 
 def help
