@@ -38,3 +38,14 @@ GAME FLOW
 9. 4th clue: Crime location
 10. User picks and wins or loses
 11. Shows information about criminal & hotline to report rats
+
+
+*** Need to use ASCII Rat somewhere in the CLI
+
+
+3.28.17:
+Next steps:
+- Finish criminal database
+- Figure out how to seed with Rat data
+- Keep writing CLI for game play
+- Work out the random name generator
