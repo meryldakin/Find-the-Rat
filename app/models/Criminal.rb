@@ -20,5 +20,9 @@ class Criminal < ActiveRecord::Base
     @@suspects = []
   end
 
+  def dead_or_alive
+    puts "dead"
+  end
+
 
 end

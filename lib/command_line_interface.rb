@@ -11,6 +11,7 @@ class GamePlay
   @@game_suspects = Criminal.get_random_suspects
   @@game_suspects_names = @@game_suspects.map {|suspect| suspect[:name]}
   @@game_mastermind = Criminal.select_mastermind
+  @@guess_counter = 1
 
   def self.welcome
     puts "Hello agent, please input your full name!"
@@ -67,9 +68,10 @@ class GamePlay
       correct_guess
     elsif user_guess != @@game_mastermind[:name]
       remove_suspect(user_guess)
+      if @@guess_counter < 4
+        puts "try again, here's a clue!"
+      end
       incorrect_guess
-    else
-      invalid_guess
     end
 
   end
@@ -79,8 +81,29 @@ class GamePlay
   end
 
   def self.incorrect_guess
-    puts "try again, here's a clue!"
-    make_a_guess
+    # binding.pry
+    case @@guess_counter
+    when 1
+      clue_1
+      @@guess_counter += 1
+      make_a_guess
+    when 2
+      clue_2
+      @@guess_counter += 1
+      make_a_guess
+    when 3
+      clue_3
+      @@guess_counter += 1
+      make_a_guess
+    when 4
+      puts "One last chance to find the villain!"
+      clue_4
+      @@guess_counter += 1
+      make_a_guess
+
+    else
+      puts "You lose! SRY"
+    end
   end
 
   def self.invalid_guess
@@ -93,6 +116,27 @@ class GamePlay
   end
 
   def self.clue_1
-
+    puts "************CLUE 1*************"
+    puts "Here's your first clue. The mastermind's preferred type of villainy was #{@@game_mastermind.crime_type}!"
+    puts "*******************************"
   end
+
+  def self.clue_2
+    puts "************CLUE 2*************"
+    puts "Clue 2: This criminal is allegedly #{@@game_mastermind.dead_or_alive}."
+    puts "*******************************"
+  end
+
+  def self.clue_3
+    puts "************CLUE 3*************"
+    puts "The criminal was born on #{@@game_mastermind.birthday}."
+    puts "*******************************"
+  end
+
+  def self.clue_4
+    puts "************CLUE 4*************"
+    puts "LAST CHANCE TO CATCH THE VILLAIN! They're most notorious for #{@@game_mastermind.most_notorious_for}."
+    puts "*******************************"
+  end
+
 end
