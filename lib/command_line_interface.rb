@@ -40,3 +40,7 @@ def help
   free and wreak havoc on the city! Each rat is being located in real-time through 311 calls from distraught citizens of New York
   City. You too can report potential criminals pretending to be rats."
 end
+
+welcome
+user_input
+assign_agent_name
