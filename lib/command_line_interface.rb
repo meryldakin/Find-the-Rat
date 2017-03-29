@@ -4,13 +4,14 @@ def welcome
   puts "Hello agent, please input your full name!"
 end
 
-def user_input
+def create_new_user
   input = gets.chomp
+  User.create(name: input, agent_name: "x")
 end
 
 def assign_agent_name
-  rng = RandomNameGenerator.new(RandomNameGenerator::ROMAN)
-  puts "For this dangerous mission, you have been given the codename #{rng.compose(3)} "
+  agent_name = create_new_user.assign_agent_name
+  puts "For this dangerous mission, you have been given the codename #{agent_name}."
 end
 
 def mission_statement
@@ -39,4 +40,13 @@ def help
   added to your casefile and you will forever be honored! If you are incorrect, the criminal will continue to run
   free and wreak havoc on the city! Each rat is being located in real-time through 311 calls from distraught citizens of New York
   City. You too can report potential criminals pretending to be rats."
+end
+
+def start_game
+  # a rat has been spotted at location on timestamp. It's identifying itself as (pseudonym).
+  # Here are a list of notorious criminals who are known to prowl this area. Uncover (pseudonym)'s true identity!
+end
+
+def clue_1
+  
 end

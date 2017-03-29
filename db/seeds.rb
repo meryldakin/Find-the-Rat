@@ -1,0 +1,1 @@
+Adapter::Rats.new

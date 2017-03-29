@@ -3,7 +3,6 @@ class CreateRatSightings < ActiveRecord::Migration
     t.string :pseudonym
     t.datetime :timestamp
     t.string :location_type
-    t.string :address
     t.float :latitude
     t.float :longitude
     t.string :borough
