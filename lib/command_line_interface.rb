@@ -1,8 +1,8 @@
 require 'random_name_generator'
-require_relative '../app/models/Criminal.rb'
-require_relative '../app/models/CriminalCapture.rb'
-require_relative '../app/models/RatSighting.rb'
-require_relative '../app/models/User.rb'
+require_relative '../app/models/criminal.rb'
+require_relative '../app/models/criminal_capture.rb'
+require_relative '../app/models/rat_sighting.rb'
+require_relative '../app/models/user.rb'
 require 'pry'
 
 
@@ -13,27 +13,34 @@ class GamePlay
   @@game_suspects_names = @@game_suspects.map {|suspect| suspect[:name]}
   @@game_mastermind = Criminal.select_mastermind
   @@guess_counter = 1
+  @@player = "unknown"
 
-  def ascii
+  def self.ascii
          "      _..----.._    _
               .'  .--.    "" (0)_
   '-.__.-'"'=:|   ,  _)_ \__ . c\'-..o
                ''''------''---''''---'
   end
 
-  def welcome
-    puts "Hello agent, please input your first name!"
+  def self.welcome
+    puts "********************************************"
+    puts "********************************************"
+    puts "********************************************"
+    puts "WELCOME TO FIND THE RAT!"
     puts "#{ascii}"
-
+    puts "********************************************"
+    puts "********************************************"
+    puts "********************************************"
+    puts "Hello agent, please input your first name!"
   end
 
   def self.create_new_user
     input = gets.chomp
-    player = User.create
-    player.name = input.capitalize
-    player.assign_agent_name
-    player.save
-    puts "Hello, #{player.name}! Your codename is #{player.agent_name}..."
+    @@player = User.create
+    @@player.name = input.capitalize
+    @@player.assign_agent_name
+    @@player.save
+    puts "Hello, #{@@player.name}! Your codename is #{@@player.agent_name}..."
   end
 
   def self.mission_statement
@@ -44,7 +51,7 @@ class GamePlay
     puts "-----------------------------------------------------------------------"
   end
 
-  def options
+  def self.options
     puts "Type 'help' to see the rules, 'exit' to leave the game or 'start' to see the first rat!"
     user_input = gets.chomp
     if user_input == 'help'
@@ -52,13 +59,14 @@ class GamePlay
     elsif user_input == 'start'
       start_game
     elsif user_input == 'exit'
-      break
+      # break
     else
       puts "I did not understand that command, agent! Please type 'help' or 'start'!"
       user_input
       options
     end
   end
+
 
   def self.help
     puts "-----------------------------------------------------------------------"
@@ -82,6 +90,7 @@ class GamePlay
   def self.make_a_guess
     suspects_list
     puts "Type the full name of the suspect to make a guess:"
+    puts "#{@@game_mastermind[:name]}"
     user_guess = gets.chomp
     if user_guess == @@game_mastermind[:name]
       correct_guess
@@ -95,12 +104,21 @@ class GamePlay
 
   end
 
-  def self.correct_guess
-    puts "you win!"
+  def self.captured_criminals
+    CriminalCapture.where(user_id: @@player.id)
   end
 
+  def self.correct_guess
+    puts "Congratulations, Agent #{@@player.agent_name}! You found #{@@game_mastermind.name}, thwarting their schemes! They have been saved in your Criminals Captured record. To learn more about this historical villain, ***do this thing***."
+    captured = CriminalCapture.create(user_id: @@player.id, rat_sighting_id: @@game_rat.id, criminal_id: @@game_mastermind.id, num_guesses: @@guess_counter)
+    player_id = captured_criminals[0].user_id
+    puts "Agent #{@@player.agent_name} captured #{@@game_mastermind.name}"
+    puts "Your captured criminals are:"
+    puts "#{Criminal.joins(:criminal_captures).where(id: @@game_mastermind.id).to_a}"
+  end
+
+
   def self.incorrect_guess
-    # binding.pry
     case @@guess_counter
     when 1
       clue_1

@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   def assign_agent_name
     self.agent_name = user_pseudonym
   end
+
+
 end
