@@ -43,10 +43,13 @@ def help
 end
 
 def start_game
+  game_rat = RatSighting.get_random_rat
+
+  puts "A rat has been spotted at #{game_rat.timestamp}"
   # a rat has been spotted at location on timestamp. It's identifying itself as (pseudonym).
   # Here are a list of notorious criminals who are known to prowl this area. Uncover (pseudonym)'s true identity!
 end
 
 def clue_1
-  
+
 end
