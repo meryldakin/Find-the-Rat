@@ -4,7 +4,7 @@ require 'CSV'
 class Adapter::CriminalInfo
   @@criminal_array =
   [{:name=>"Pablo Escobar",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"01 December 1949",
     :death_date=>"02 December 1993",
     :century=>"20th",
@@ -26,13 +26,13 @@ class Adapter::CriminalInfo
      "He was able to delay his execution for nearly 10 years through the long appeals process and tried to take his case up to the U.S Supreme Court but ultimately he couldn’t overturn his death sentence.",
   },
    {:name=>"Whitey Bulger",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"03 September 1929",
     :death_date=>nil,
     :century=>"20th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/whitey-bulger-5588.php",
     :most_notorious_for=>
-     "This violent mob boss, who ruled Boston’s organized crime world during the 70s and 80s, has an exciting criminal life. The FBI, too, relied on him for information and was supportive of him in carrying out a number of crimes.",
+     "This violent mob boss, who ruled Boston’s underground mob world during the 70s and 80s, has an exciting criminal life. The FBI, too, relied on him for information and was supportive of him in carrying out a number of crimes.",
     :trivia=>
      "He spent three years in Alcatraz Island prison off San Francisco’s shoreline, after attempting to escape from the Atlanta prison in November 1959."
     },
@@ -70,7 +70,7 @@ class Adapter::CriminalInfo
      "As a Satanist, he became quite popular among the other followers of the cult, and had several fans who were fascinated with him. One of them, freelance magazine editor Doreen Lioy, fell in love with the killer and married him in California's San Quentin State Prison in October 1996."
     },
    {:name=>"Al Capone",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"17 January 1899",
     :death_date=>"25 January 1947",
     :century=>"20th",
@@ -81,7 +81,7 @@ class Adapter::CriminalInfo
      "His style of wearing the fedora hat has been a popular trend, and is being followed by many till date."
     },
    {:name=>"Richard Kuklinski",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"11 May 1935",
     :death_date=>"05 March 2006",
     :century=>"20th",
@@ -103,7 +103,7 @@ class Adapter::CriminalInfo
      "His mother Zerelda Samuel wrote a book dedicating it to his son, ‘In Loving Memory of my Beloved Son, Murdered by a Traitor and Coward Whose Name is not Worthy to Appear Here.’"
     },
    {:name=>"John Gotti",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"27 October 1940",
     :death_date=>"10 June 2002",
     :century=>"20th",
@@ -114,18 +114,18 @@ class Adapter::CriminalInfo
      "The American press constantly depicted him as a ruthless mobster and therefore this mafia don used to try and keep a normal public image to play down press and also used to offer coffee to FBI agents sent to handle his case."
     },
    {:name=>"Lucky Luciano",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"11 November 1897",
     :death_date=>"26 January 1962",
     :century=>"20th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/lucky-luciano-6650.php",
     :most_notorious_for=>
-     "Sicilian-born American mobster considered the father of modern organized crime in the United States. As the head of the modern Genovese crime family, he played an instrumental role in the development of the National Crime Syndicate in the United States.",
+     "Sicilian-born American mobster considered the father of modern Organized Crime in the United States. As the head of the modern Genovese crime family, he played an instrumental role in the development of the National Crime Syndicate in the United States.",
     :trivia=>
      "Aggressive and shrewd, he started his own gang as a teenager and was also a member of the old Five Points Gang. But his interest was not limited to petty crimes; he  also offered protection to Jewish youngsters from Italian and Irish gangs for 10 cents per week."
     },
    {:name=>"John Dillinger",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"22 June 1903",
     :death_date=>"22 July 1934",
     :century=>"20th",
@@ -167,8 +167,8 @@ class Adapter::CriminalInfo
     :trivia=>
      "He was a master of disguise who often impersonated a postal telegraph messenger, police officer or maintenance man."
     },
-   {:name=>"Carlos Marcellow",
-    :crime_type=>"Gangster",
+   {:name=>"Carlos Marcello",
+    :crime_type=>"Organized Crime",
     :birthday=>"06 February 1910",
     :death_date=>"03 March 1993",
     :century=>"20th",
@@ -190,13 +190,13 @@ class Adapter::CriminalInfo
      "The most popular books written on him are: ‘The Devil in the White City; Murder, Magic, and Madness at the Fair that Changed America’ by Erik Larson (2003), ‘The Torture Doctor’ by David Franke (1975), ‘American Gothic’ by Robert Bloch (1974) and ‘Depraved: The Shocking True Story of America’s First Serial Killer’ by Harold Schechter (1994) among others."
     },
    {:name=>"Larry Hoover",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"25 December 1950",
     :death_date=>"n/a",
     :century=>"20th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/larry-hoover-31351.php",
     :most_notorious_for=>
-     "Founder and former leader of a Chicago street gang, Black Gangster Disciple Nation, now known as Gangster Disciples.",
+     "Founder and former leader of a Chicago street gang, Black Gangster Disciple Nation, now known as Organized Crime Disciples.",
     :trivia=>"He is considered Chicago’s biggest gangster since Al Capone."
     },
    {:name=>"Charles Manson",
@@ -211,24 +211,24 @@ class Adapter::CriminalInfo
      "As the son of a prostitute, he became involved with a number of burglary cases when he was very young."
     },
    {:name=>"Paul Castellano",
-    :crime_type=>"Gangster",
+    :crime_type=>"Organized Crime",
     :birthday=>"26 June 1915",
     :death_date=>"16 November 1985",
     :century=>"20th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/paul-castellano-3396.php",
     :most_notorious_for=>
-     "Popularly known as ‘The Howard Hughes of the Mob’, ‘Big Paul’, ‘The Pope’ and ‘The Chicken Man’, he was the head of the Gambino crime family which used to operate organized crime activities in New York City.",
+     "Popularly known as ‘The Howard Hughes of the Mob’, ‘Big Paul’, ‘The Pope’ and ‘The Chicken Man’, he was the head of the Gambino crime family which used to operate Organized Crime activities in New York City.",
     :trivia=>
      "This infamous person constructed a 17-room mansion in New York. Resembling the White House in Washington, D.C., this house consisted of an Olympic size swimming pool."
    },
    {:name=>"William M. Tweed",
-    :crime_type=>"Politician",
+    :crime_type=>"Crooked Politics",
     :birthday=>"03 April 1823",
     :death_date=>"12 April 1878",
     :century=>"19th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/william-m-tweed-6658.php",
     :most_notorious_for=>
-     "A politician very deeply involved in political corruption. An alderman’s committee in 1877 estimated that he stole between $25 million and $45 million from New York City taxpayers though according to later estimates, he might have stolen as much as $200 million.",
+     "A seedy character very deeply involved in political corruption. An alderman’s committee in 1877 estimated that he stole between $25 million and $45 million from New York City taxpayers though according to later estimates, he might have stolen as much as $200 million.",
     :trivia=>
      "He was the boss of Tammany Hall, the Democratic Party political machine that played a major role in the politics of 19th century New York City and State."
     },

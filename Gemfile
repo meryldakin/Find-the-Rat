@@ -8,3 +8,4 @@ gem "require_all"
 gem "rest-client"
 gem "random_name_generator"
 gem 'randumb'
+gem 'launchy'
