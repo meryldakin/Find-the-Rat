@@ -1,4 +1,4 @@
-module Adapter
+module Adapter 
 
 
 end

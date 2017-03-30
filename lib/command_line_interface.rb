@@ -15,6 +15,15 @@ class GamePlay
   @@guess_counter = 1
   @@player = "unknown"
 
+  # def initialize
+  #   @views = GamePlayView.new
+  # end
+  #
+  # def run
+  #   views.welcome
+  #   self.create_new_user
+  # end
+
   def self.ascii
 
                      "
@@ -151,7 +160,9 @@ class GamePlay
     player_id = captured_criminals[0].user_id
     puts "Agent #{@@player.agent_name} captured #{@@game_mastermind.name}"
     puts "Your captured criminals are:"
-    puts "#{Criminal.joins(:criminal_captures).where(id: @@game_mastermind.id).to_a}"
+    @@player.criminals.each do |criminal_object|
+      puts criminal_object.name
+    end
     self.options
   end
 
@@ -202,7 +213,7 @@ class GamePlay
 
   def self.clue_2
     puts "************CLUE 2*************"
-    puts "OK, we got another clue for you! This cCENTURY."
+    puts "OK, we got another clue for you! The criminal operated mostly in the #{@@game_mastermind.century} century."
     puts "*******************************"
   end
 
@@ -212,7 +223,7 @@ class GamePlay
     puts "*******************************"
   end
 
-  def self.clue_3
+  def self.clue_4
     puts "************CLUE 4*************"
     puts "Trivia about this criminal: #{@@game_mastermind.trivia}"
     puts "*******************************"
