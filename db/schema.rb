@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "criminal_captures", force: :cascade do |t|
     t.integer "criminal_id"
-    t.integer "rat_sighting"
+    t.integer "rat_sighting_id"
     t.integer "user_id"
     t.integer "num_guesses"
   end

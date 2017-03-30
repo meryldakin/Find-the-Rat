@@ -12,8 +12,5 @@ class User < ActiveRecord::Base
     self.agent_name = user_pseudonym
   end
 
-  def self.welcome_back_or_create
-    user_input = gets.chomp
-    if User.where(name:"#{user_input}")
-      
+
 end
