@@ -25,6 +25,10 @@ We give them a list of "suspects" - a row of data, a rat name is assigned to eac
 
 Name generator: http://www.rubydoc.info/gems/random_name_generator/1.0.2
 
+
+
+
+
 GAME FLOW
 
 1. Welcome message
@@ -48,3 +52,17 @@ Next steps:
 - Finish criminal database
 
 - Keep writing CLI for game play
+
+
+
+
+
+*******Suggestions******
+- bullet Points for rules and messages
+- add pin point on maps
+- dashes in front of suspect names
+- make rat move with sleep
+- capitalize rat name
+- Add in that you typed the name Wrong with stop goofing off
+- GOodbye message
+- Add >>> in front of Press any key to continue 
