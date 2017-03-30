@@ -160,7 +160,7 @@ class GamePlay
 
   def self.clue_2
     puts "************CLUE 2*************"
-    puts "Clue 2: This criminal is allegedly #{@@game_mastermind.dead_or_alive}."
+    puts "Clue 2: Centur This criminal is allegedly #{@@game_mastermind.dead_or_alive}."
     puts "*******************************"
   end
 
@@ -170,8 +170,14 @@ class GamePlay
     puts "*******************************"
   end
 
-  def self.clue_4
+  def self.clue_3
     puts "************CLUE 4*************"
+    puts "Trivia about this criminal: #{@@game_mastermind.trivia}"
+    puts "*******************************"
+  end
+
+  def self.clue_5
+    puts "************CLUE 5*************"
     puts "LAST CHANCE TO CATCH THE VILLAIN! They're most notorious for #{@@game_mastermind.most_notorious_for}."
     puts "*******************************"
   end

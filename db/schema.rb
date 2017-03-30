@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6) do
+ActiveRecord::Schema.define(version: 7) do
 
   create_table "criminal_captures", force: :cascade do |t|
     t.integer "criminal_id"
@@ -22,11 +22,12 @@ ActiveRecord::Schema.define(version: 6) do
   create_table "criminals", force: :cascade do |t|
     t.string "name"
     t.string "crime_type"
-    t.string "crime_location"
+    t.string "century"
     t.string "birthday"
     t.string "deathday"
     t.string "criminal_page_url"
     t.string "most_notorious_for"
+    t.string "trivia"
   end
 
   create_table "rat_sightings", force: :cascade do |t|
