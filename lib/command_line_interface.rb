@@ -6,6 +6,7 @@ require_relative '../app/models/user.rb'
 require 'pry'
 
 
+
 class GamePlay
 
   @@game_rat = RatSighting.get_random_rat
@@ -14,6 +15,15 @@ class GamePlay
   @@game_mastermind = Criminal.select_mastermind
   @@guess_counter = 1
   @@player = "unknown"
+
+  # def initialize
+  #   @views = GamePlayView.new
+  # end
+  #
+  # def run
+  #   views.welcome
+  #   self.create_new_user
+  # end
 
   def self.ascii
 
@@ -25,6 +35,7 @@ class GamePlay
   end
 
   def self.welcome
+    system "clear"
     puts "********************************************"
     puts "********************************************"
     puts "********************************************"
@@ -55,20 +66,36 @@ def options
     puts "I did not understand that command, agent! Please type 'help' or 'start'!"
     user_input
     options
+  end
+end
+
+  def self.launch_website(website)
+    Launchy.open(website)
+  end
+
+  def self.continue
+    print "Press any key to continue..."
+    STDIN.getch
+    print "                                   \r"
+    puts "                                                                     "
+  end
+
   def self.create_new_user
     input = gets.chomp
     @@player = User.create
     @@player.name = input.capitalize
     @@player.assign_agent_name
     @@player.save
-    puts "Hello, #{@@player.name}! Your codename is #{@@player.agent_name}..."
+    puts "Hello, #{@@player.name}! For this dangerous mission, we're assigning you the codename #{@@player.agent_name.upcase}."
+    self.continue
   end
 
 
 
 def help
   puts "-----------------------------------------------------------------------"
-  puts "Pay attention, agent! Your job is to find the criminal that is masquerading as a rat! You will be given
+  puts "
+  Pay attention, agent! Your job is to find the criminal that is masquerading as a rat! You will be given
   a list of suspects and a clue to help you narrow your search. You will be given four chances with a new clue each time
   to find the mastermind! If your deductive skills suffice to pinpoint the correct criminal, that criminal will be
   added to your casefile and you will forever be honored! If you are incorrect, the criminal will continue to run
@@ -77,11 +104,19 @@ def help
   puts "-----------------------------------------------------------------------"
 end
   def self.mission_statement
-    puts "-----------------------------------------------------------------------"
+    system "clear"
+    puts "-----------CASEFILE FOR AGENT #{@@player.agent_name.upcase}------------"
+    # puts "
+    # A notorious criminal is posing as a RAT in New York City! We've scraped the data from the
+    # latest 311 calls on rat sightings so that we can uncover the culprit behind this mastermind scheme!
+    # Your job is to use the clues from a classified FBI database to identify the villain masquerading as a mere NYC rat!
+    # "
     puts "
-    A notorious criminal is posing as a rat in New York City! We've scraped the data from the
-    latest 311 calls on rat sightings, so that we can uncover the culprit behind this mastermind scheme! Your job is to
-    use the clues from a classified FBI database that we provide you to identify the villain masquerading as a mere NYC rat!
+    Oh noes! Mutant rats have taken over New York City! We don't know why but they seemed to
+    have taken the form of some of the most notorious criminal masterminds the world has ever seen!
+    Our only hope is the brilliant data we acquired via 311 reps working day and night logging
+    complaints from our fellow citizens of the RAT SIGHTINGS. Your mission, should you choose to accept it, is to use the clues
+    we gathered from a classified FBI database to identify the mutant rat based on behavioral patterns resembling a famous criminal!
     "
     puts "-----------------------------------------------------------------------"
   end
@@ -115,29 +150,43 @@ end
   def self.help
     puts "-----------------------------------------------------------------------"
     puts "
-    Pay attention, agent! Your job is to find the criminal that is masquerading as a rat! You will be given
-    a list of suspects and a clue to help you narrow your search. You will be given four chances with a new clue each time
-    to find the mastermind! If your deductive skills suffice to pinpoint the correct criminal, that criminal will be
-    added to your casefile and you will forever be honored! If you are incorrect, the criminal will continue to run
-    free and wreak havoc on the city! Each rat is being located in real-time through 311 calls from distraught citizens of New York
-    City. You too can report potential criminals pretending to be rats.
+    You will be given a list of suspects and a clue to help you narrow your search. You will be given four chances with a new clue each time
+    to find the mastermind! Each rat is being located in real-time through 311 calls from distraught citizens of New York
+    City. You too can be a hero: catch the criminal here and report potential criminals pretending to be rats by calling 311!
     "
+    self.continue
     puts "-----------------------------------------------------------------------"
   end
 
   def self.start_game
     puts "-----------------------------------------------------------------------"
     puts "
-    A rat has been spotted at #{@@game_rat.timestamp}. We have identified him as #{@@game_rat.pseudonym}.
-    Here's a list of notorious criminals who are known to prowl this area.
-    Uncover #{@@game_rat.pseudonym}'s true identity by using the clues to discover his true identity
-    correctly before he escapes!
+    RAT SIGHTING:
+    A rat has been spotted at #{@@game_rat.timestamp}."
+    sleep(2)
+    puts "-----------------------------------------------------------------------"
+    puts "We're sending his last known coordinates, #{@@game_rat.latitude}, #{@@game_rat.longitude} to your browser window..."
+    self.continue
+    self.launch_website("https://www.google.com/maps/search/ice+cream+stores/@#{@@game_rat.latitude},#{@@game_rat.longitude}")
+    sleep(1)
+    puts "-----------------------------------------------------------------------"
+    puts "Hmm. He seems to be targeting ice cream shops."
+    self.continue
+    puts "
+    He is operating under the code name #{@@game_rat.pseudonym}.
+    You will be shown a list of notorious criminals who are known to prowl this area and may be posing as #{@@game_rat.pseudonym}.
+    Unmask #{@@game_rat.pseudonym} by using the clues to discover his true identity correctly before he escapes...
+
     "
     puts "-----------------------------------------------------------------------"
+    self.continue
+    clue_1
+    self.continue
     self.make_a_guess
   end
 
   def self.suspects_list
+    puts "SUSPECT LIST"
     @@game_suspects_names.each {|suspect| puts suspect}
   end
 
@@ -146,18 +195,24 @@ end
     puts "======================================================================="
     puts "Type the full name of the suspect to make a guess:"
     puts "======================================================================="
-    puts "#{@@game_mastermind[:name]}"
     user_guess = gets.chomp
     if user_guess == @@game_mastermind[:name]
       correct_guess
     elsif user_guess == 'exit'
       self.leave
-    elsif user_guess != @@game_mastermind[:name]
+    elsif @@game_suspects_names.include?(user_guess) && user_guess != @@game_mastermind[:name]
       remove_suspect(user_guess)
       if @@guess_counter < 4
-        puts "Try again, here's a clue!"
+        puts "Wrong villain, try again!"
+        self.continue
       end
       incorrect_guess
+    else
+      system "clear"
+      puts "====================================================================="
+      puts "Stop goofing off and catch this criminal!"
+      puts "====================================================================="
+      make_a_guess
     end
 
   end
@@ -169,44 +224,61 @@ end
   def self.correct_guess
     puts "
     *****************************************
+
     * You got him! You win! OMG ur so good! *
+                      :)
     *****************************************"
-    puts "Congratulations, Agent #{@@player.agent_name}! You found #{@@game_mastermind.name}, thwarting their schemes! They have been saved in your Criminals Captured record. To learn more about this historical villain, ***do this thing***."
+    puts "Congratulations, Agent #{@@player.agent_name}! You captured #{@@game_mastermind.name}, thwarting his schemes!"
     captured = CriminalCapture.create(user_id: @@player.id, rat_sighting_id: @@game_rat.id, criminal_id: @@game_mastermind.id, num_guesses: @@guess_counter)
     player_id = captured_criminals[0].user_id
-    puts "Agent #{@@player.agent_name} captured #{@@game_mastermind.name}"
-    puts "Your captured criminals are:"
-    puts "#{Criminal.joins(:criminal_captures).where(id: @@game_mastermind.id).to_a}"
-    self.options
+    self.continue
+    self.mastermind_stats
+    self.continue
+    self.launch_website(@@game_mastermind.criminal_page_url)
+  end
+
+  def self.mastermind_stats
+    puts "***************************************"
+    puts "***********MASTERMIND STATS************"
+    puts "***************************************"
+    puts "                                                       "
+    puts "#{@@game_mastermind.name}:"
+    puts "Born #{@@game_mastermind.birthday}"
+    puts "He operated in the #{@@game_mastermind.century} century."
+    puts "KNOWN FOR:"
+    puts ">> #{@@game_mastermind.most_notorious_for}"
+    puts "DID YOU KNOW?"
+    puts ">> #{@@game_mastermind.trivia}"
+    puts "                                                       "
   end
 
 
   def self.incorrect_guess
     case @@guess_counter
     when 1
-      clue_1
-      @@guess_counter += 1
-      make_a_guess
-    when 2
       clue_2
       @@guess_counter += 1
       make_a_guess
-    when 3
+    when 2
       clue_3
+      @@guess_counter += 1
+      make_a_guess
+    when 3
+      clue_4
       @@guess_counter += 1
       make_a_guess
     when 4
       puts "One last chance to find the villain!"
-      clue_4
+      clue_5
       @@guess_counter += 1
       make_a_guess
-
     else
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       You lose! SRY!"
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-      puts "Wanna try again?"
-      self.options
+      puts "The mastermind was #{@@game_mastermind.name}."
+      self.continue
+      self.launch_website(@@game_mastermind.criminal_page_url)
     end
   end
 
@@ -220,27 +292,53 @@ end
   end
 
   def self.clue_1
-    puts "************CLUE 1*************"
-    puts "Here's your first clue! The mastermind's specialized in #{@@game_mastermind.crime_type}!"
-    puts "*******************************"
+    system "clear"
+    puts "                                                       "
+    puts "************************CLUE 1*************************"
+    puts "                                                       "
+    puts "Here's your first clue! The mastermind is specialized in #{@@game_mastermind.crime_type}!"
+    puts "                                                       "
+    puts "*******************************************************"
   end
 
   def self.clue_2
-    puts "************CLUE 2*************"
-    puts "OK, we got another clue for you! This criminal is allegedly #{@@game_mastermind.dead_or_alive}."
-    puts "*******************************"
+    system "clear"
+    puts "                                                       "
+    puts "************************CLUE 2*************************"
+    puts "                                                       "
+    puts "OK, we got another clue for you! The criminal operated mostly in the #{@@game_mastermind.century} century."
+    puts "                                                       "
+    puts "*******************************************************"
   end
 
   def self.clue_3
-    puts "************CLUE 3*************"
+    system "clear"
+    puts "                                                       "
+    puts "************************CLUE 3*************************"
+    puts "                                                       "
     puts "We're cutting it close...he's gonna get away! The criminal was born on #{@@game_mastermind.birthday}."
-    puts "*******************************"
+    puts "                                                       "
+    puts "*******************************************************"
   end
 
   def self.clue_4
-    puts "************CLUE 4*************"
+    system "clear"
+    puts "                                                       "
+    puts "************************CLUE 4*************************"
+    puts "                                                       "
+    puts "Trivia about this criminal: #{@@game_mastermind.trivia}"
+    puts "                                                       "
+    puts "*******************************************************"
+  end
+
+  def self.clue_5
+    system "clear"
+    puts "                                                       "
+    puts "************************CLUE 5*************************"
+    puts "                                                       "
     puts "LAST CHANCE TO CATCH THE VILLAIN! They're most notorious for #{@@game_mastermind.most_notorious_for}."
-    puts "*******************************"
+    puts "                                                       "
+    puts "*******************************************************"
   end
 
 end

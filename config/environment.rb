@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require
 require 'json'
+require 'io/console'
 
 ActiveRecord::Base.establish_connection(
   adapter: 'sqlite3',
