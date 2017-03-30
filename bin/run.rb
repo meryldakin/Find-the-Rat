@@ -1,5 +1,6 @@
 require_relative '../config/environment'
-welcome
-create_new_user
-mission_statement
-options
+
+GamePlay.welcome
+GamePlay.create_new_user
+GamePlay.mission_statement
+GamePlay.options
