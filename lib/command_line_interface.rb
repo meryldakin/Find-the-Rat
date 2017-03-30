@@ -35,6 +35,7 @@ class GamePlay
   end
 
   def self.welcome
+    system "clear"
     puts "********************************************"
     puts "********************************************"
     puts "********************************************"
@@ -51,6 +52,22 @@ class GamePlay
     puts "********************************************"
     puts "Hello agent, please input your first name!"
   end
+
+def options
+  puts "Type 'help' to see the rules, 'exit' to leave the game or 'start' to see the first rat!"
+  user_input = gets.chomp
+  if user_input == 'help'
+    help
+  elsif user_input == 'start'
+    start_game
+  elsif user_input == 'exit'
+    leave
+  else
+    puts "I did not understand that command, agent! Please type 'help' or 'start'!"
+    user_input
+    options
+  end
+end
 
   def self.launch_website(website)
     Launchy.open(website)
@@ -70,16 +87,32 @@ class GamePlay
     @@player.assign_agent_name
     @@player.save
     puts "Hello, #{@@player.name}! For this dangerous mission, we're assigning you the codename #{@@player.agent_name.upcase}."
+    self.continue
   end
 
+
+
+def help
+  puts "-----------------------------------------------------------------------"
+  puts "
+  Pay attention, agent! Your job is to find the criminal that is masquerading as a rat! You will be given
+  a list of suspects and a clue to help you narrow your search. You will be given four chances with a new clue each time
+  to find the mastermind! If your deductive skills suffice to pinpoint the correct criminal, that criminal will be
+  added to your casefile and you will forever be honored! If you are incorrect, the criminal will continue to run
+  free and wreak havoc on the city! Each rat is being located in real-time through 311 calls from distraught citizens of New York
+  City. You too can report potential criminals pretending to be rats."
+  puts "-----------------------------------------------------------------------"
+end
   def self.mission_statement
+    system "clear"
     puts "-----------CASEFILE FOR AGENT #{@@player.agent_name.upcase}------------"
     # puts "
     # A notorious criminal is posing as a RAT in New York City! We've scraped the data from the
     # latest 311 calls on rat sightings so that we can uncover the culprit behind this mastermind scheme!
     # Your job is to use the clues from a classified FBI database to identify the villain masquerading as a mere NYC rat!
     # "
-    puts "Oh noes! Mutant rats have taken over New York City! We don't know why but they seemed to
+    puts "
+    Oh noes! Mutant rats have taken over New York City! We don't know why but they seemed to
     have taken the form of some of the most notorious criminal masterminds the world has ever seen!
     Our only hope is the brilliant data we acquired via 311 reps working day and night logging
     complaints from our fellow citizens of the RAT SIGHTINGS. Your mission, should you choose to accept it, is to use the clues
@@ -130,13 +163,17 @@ class GamePlay
     puts "
     RAT SIGHTING:
     A rat has been spotted at #{@@game_rat.timestamp}."
-    sleep(1)
+    sleep(2)
+    puts "-----------------------------------------------------------------------"
     puts "We're sending his last known coordinates, #{@@game_rat.latitude}, #{@@game_rat.longitude} to your browser window..."
     self.continue
     self.launch_website("https://www.google.com/maps/search/ice+cream+stores/@#{@@game_rat.latitude},#{@@game_rat.longitude}")
+    sleep(1)
+    puts "-----------------------------------------------------------------------"
     puts "Hmm. He seems to be targeting ice cream shops."
     self.continue
-    puts "He is operating under the code name #{@@game_rat.pseudonym}.
+    puts "
+    He is operating under the code name #{@@game_rat.pseudonym}.
     You will be shown a list of notorious criminals who are known to prowl this area and may be posing as #{@@game_rat.pseudonym}.
     Unmask #{@@game_rat.pseudonym} by using the clues to discover his true identity correctly before he escapes...
 
@@ -167,10 +204,14 @@ class GamePlay
       remove_suspect(user_guess)
       if @@guess_counter < 4
         puts "Wrong villain, try again!"
+        self.continue
       end
       incorrect_guess
     else
+      system "clear"
+      puts "====================================================================="
       puts "Stop goofing off and catch this criminal!"
+      puts "====================================================================="
       make_a_guess
     end
 
@@ -251,6 +292,7 @@ class GamePlay
   end
 
   def self.clue_1
+    system "clear"
     puts "                                                       "
     puts "************************CLUE 1*************************"
     puts "                                                       "
@@ -260,6 +302,7 @@ class GamePlay
   end
 
   def self.clue_2
+    system "clear"
     puts "                                                       "
     puts "************************CLUE 2*************************"
     puts "                                                       "
@@ -269,6 +312,7 @@ class GamePlay
   end
 
   def self.clue_3
+    system "clear"
     puts "                                                       "
     puts "************************CLUE 3*************************"
     puts "                                                       "
@@ -278,6 +322,7 @@ class GamePlay
   end
 
   def self.clue_4
+    system "clear"
     puts "                                                       "
     puts "************************CLUE 4*************************"
     puts "                                                       "
@@ -287,6 +332,7 @@ class GamePlay
   end
 
   def self.clue_5
+    system "clear"
     puts "                                                       "
     puts "************************CLUE 5*************************"
     puts "                                                       "

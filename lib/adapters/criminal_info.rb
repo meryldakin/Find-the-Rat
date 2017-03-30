@@ -176,7 +176,7 @@ class Adapter::CriminalInfo
     :most_notorious_for=>
      "An Italian-American crime boss operating in New Orleans region of Louisiana. He was of Sicilian origin and came to the United States of America with his parents when he was just one year old.",
     :trivia=>
-     "When President Kennedy was assassinated in 1963, it was believed that Marcello was the man behind it."
+     "When President Kennedy was assassinated in 1963, it was believed that he was the man behind it."
     },
    {:name=>"H.H. Holmes",
     :crime_type=>"Murder",
