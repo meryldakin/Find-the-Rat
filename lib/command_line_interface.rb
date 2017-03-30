@@ -42,7 +42,6 @@ class GamePlay
     puts "Hello agent, please input your first name!"
   end
 
-<<<<<<< HEAD
 def options
   puts "Type 'help' to see the rules, 'exit' to leave the game or 'start' to see the first rat!"
   user_input = gets.chomp
@@ -56,7 +55,6 @@ def options
     puts "I did not understand that command, agent! Please type 'help' or 'start'!"
     user_input
     options
-=======
   def self.create_new_user
     input = gets.chomp
     @@player = User.create
@@ -64,13 +62,9 @@ def options
     @@player.assign_agent_name
     @@player.save
     puts "Hello, #{@@player.name}! Your codename is #{@@player.agent_name}..."
->>>>>>> 67670a122dca307e4f6a7dc3ded431355ccaf7fb
   end
 
-<<<<<<< HEAD
-def leave
-  puts "Goodbye!"
-end
+
 
 def help
   puts "-----------------------------------------------------------------------"
@@ -82,7 +76,6 @@ def help
   City. You too can report potential criminals pretending to be rats."
   puts "-----------------------------------------------------------------------"
 end
-=======
   def self.mission_statement
     puts "-----------------------------------------------------------------------"
     puts "
@@ -112,7 +105,6 @@ end
       options
     end
   end
->>>>>>> 67670a122dca307e4f6a7dc3ded431355ccaf7fb
 
   def self.leave
     puts "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
