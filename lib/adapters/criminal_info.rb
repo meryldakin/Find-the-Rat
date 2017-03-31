@@ -185,7 +185,7 @@ class Adapter::CriminalInfo
     :century=>"19th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/h-h-holmes-29982.php",
     :most_notorious_for=>
-     "An infamous American serial killer who was active during the last quarter of the 19th century. Often referred to as ‘America’s first serial killer’,* confessed to having committed 27 murders, while different estimates claim that the number could be anything between 20 and 200.",
+     "An infamous American serial killer who was active during the last quarter of the 19th century. Often referred to as ‘America’s first serial killer’,he confessed to having committed 27 murders, while different estimates claim that the number could be anything between 20 and 200.",
     :trivia=>
      "The most popular books written on him are: ‘The Devil in the White City; Murder, Magic, and Madness at the Fair that Changed America’ by Erik Larson (2003), ‘The Torture Doctor’ by David Franke (1975), ‘American Gothic’ by Robert Bloch (1974) and ‘Depraved: The Shocking True Story of America’s First Serial Killer’ by Harold Schechter (1994) among others."
     },
@@ -196,7 +196,7 @@ class Adapter::CriminalInfo
     :century=>"20th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/larry-hoover-31351.php",
     :most_notorious_for=>
-     "Founder and former leader of a Chicago street gang, Black Gangster Disciple Nation, now known as Organized Crime Disciples.",
+     "Founder and former leader of a Chicago street gang, Black Gangster Disciple Nation, now known as Gangster Disciples.",
     :trivia=>"He is considered Chicago’s biggest gangster since Al Capone."
     },
    {:name=>"Charles Manson",
@@ -217,7 +217,7 @@ class Adapter::CriminalInfo
     :century=>"20th",
     :link_to_page=>"http://www.thefamouspeople.com/profiles/paul-castellano-3396.php",
     :most_notorious_for=>
-     "Popularly known as ‘The Howard Hughes of the Mob’, ‘Big Paul’, ‘The Pope’ and ‘The Chicken Man’, he was the head of the Gambino crime family which used to operate Organized Crime activities in New York City.",
+     "Popularly known as ‘The Howard Hughes of the Mob’, ‘The Pope’ and ‘The Chicken Man’, he was the head of the Gambino crime family which used to operate mafia activities in New York City.",
     :trivia=>
      "This infamous person constructed a 17-room mansion in New York. Resembling the White House in Washington, D.C., this house consisted of an Olympic size swimming pool."
    },
@@ -282,8 +282,8 @@ class Adapter::CriminalInfo
     :century=>"18th",
     :link_to_page=>"https://en.wikipedia.org/wiki/John_Andr%C3%A9",
     :most_notorious_for=>
-     "he was placed in charge of the British Secret Intelligence. By the next year (1780) he had begun to plot with American General Benedict Arnold, who commanded West Point",
-    :trivia=>"He was put on trial before a board of senior officers, and then hanged"
+     "He was placed in charge of the British Secret Intelligence. By the next year (1780) he had begun to plot with American General Benedict Arnold, who commanded West Point.",
+    :trivia=>"He was put on trial before a board of senior officers, and then hanged."
     },
    {:name=>"Nathan Hale",
     :crime_type=>"Espionage",
@@ -292,9 +292,9 @@ class Adapter::CriminalInfo
     :century=>"18th",
     :link_to_page=>"https://en.wikipedia.org/wiki/Nathan_Hale",
     :most_notorious_for=>
-     "was an American soldier and spy for the Continental Army during the American Revolutionary War",
+     "He was an American soldier and spy for the Continental Army during the American Revolutionary War.",
     :trivia=>
-     "He has long been considered an American hero and, in 1985, he was officially designated the state hero of Connecticut"
+     "He has long been considered an American hero and, in 1985, he was officially designated the state hero of Connecticut."
     },
    {:name=>"Richard Sorge",
     :crime_type=>"Espionage",
@@ -303,8 +303,8 @@ class Adapter::CriminalInfo
     :century=>"19th",
     :link_to_page=>"https://en.wikipedia.org/wiki/Richard_Sorge",
     :most_notorious_for=>
-     "He is considered to have been one of the best Soviet spies in Japan before and during World War II, which has gained him fame among spies, and espionage enthusiasts",
-    :trivia=>"After being fired from a teaching and mining job, he fled to the Soviet Union where he was recruited as a spy for the and using the cover of being a journalist was sent to various European countries to assess the possibility of communist uprisings taking place"
+     "He is considered to have been one of the best Soviet spies in Japan before and during World War II, which has gained him fame among spies, and espionage enthusiasts.",
+    :trivia=>"After being fired from a teaching and mining job, he fled to the Soviet Union where he was recruited as a spy for the Russians, and under the cover of being a journalist, was sent to various European countries to assess the possibility of communist uprisings taking place."
     }]
 
 

@@ -58,11 +58,12 @@ Next steps:
 
 
 *******Suggestions******
-- bullet Points for rules and messages
-- add pin point on maps
-- dashes in front of suspect names
+
 - make rat move with sleep
-- capitalize rat name
-- Add in that you typed the name Wrong with stop goofing off
+
+- standardize mythology
+
+- write ReadMe
+
+
 - GOodbye message
-- Add >>> in front of Press any key to continue 

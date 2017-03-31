@@ -19,6 +19,7 @@ GEM
     concurrent-ruby (1.0.5)
     domain_name (0.5.20170223)
       unf (>= 0.0.5, < 1.0.0)
+    geocoder (1.4.3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.1)
@@ -70,6 +71,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  geocoder
   launchy
   pry
   random_name_generator

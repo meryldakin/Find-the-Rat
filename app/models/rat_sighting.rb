@@ -10,4 +10,8 @@ class RatSighting < ActiveRecord::Base
     RatSighting.order_by_rand.first
   end
 
+  def address_format
+    self.address.split(" ").join("+")
+  end
+
 end

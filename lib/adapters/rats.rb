@@ -7,7 +7,7 @@ class Adapter::Rats
   end
 
   def pseudonym
-    rng = RandomNameGenerator.new(RandomNameGenerator::FANTASY)
+    rng = RandomNameGenerator.new(RandomNameGenerator::GOBLIN)
     rng.compose(3)
   end
 
@@ -23,14 +23,19 @@ class Adapter::Rats
   def seed_rats
     clear_rats_table
     fetch_rats.each do |hash|
-      RatSighting.create(
-        pseudonym: pseudonym,
-        timestamp: hash["created_date"],
-        location_type: hash["location_type"],
-        latitude: hash["latitude"],
-        longitude: hash["longitude"],
-        borough: hash["borough"]
-        )
+      if hash["incident_address"]
+        RatSighting.create(
+          pseudonym: pseudonym,
+          timestamp: hash["created_date"],
+          location_type: hash["location_type"],
+          latitude: hash["latitude"],
+          longitude: hash["longitude"],
+          borough: hash["borough"],
+          address: hash["incident_address"]
+          )
+        
+      end
     end
   end
+
 end
