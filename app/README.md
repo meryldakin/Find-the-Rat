@@ -8,8 +8,8 @@ Mutant rats are taking over NYC! They're taking the form of notorious criminals 
 
 ## Installation
 
-1. Fork this repository
-2. Clone to your local directory
+1. Clone to your local directory
+2. Put terminal to full screen for maximum game-play
 3. In your terminal, navigate to this directory and run "bundle install"
 4. Run "rake db:migrate"
 5. Run "rake db:seed"
