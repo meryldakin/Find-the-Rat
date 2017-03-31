@@ -8,8 +8,8 @@ Mutant rats are taking over NYC! They're taking the form of notorious criminals 
 
 ## Installation
 
-1. Fork this repository
-2. Clone to your local directory
+1. Clone this repo to your local directory
+2. Put terminal to full screen for maximum game-play
 3. In your terminal, navigate to this directory and run "bundle install"
 4. Run "rake db:migrate"
 5. Run "rake db:seed"
@@ -20,6 +20,6 @@ Mutant rats are taking over NYC! They're taking the form of notorious criminals 
 
 Find the Rat uses a API from Open NYC to get realtime rat sighting data. This API is updated daily through various complaints made by citizens of New York via 311.
 
-The game also uses a database compiled by the makers manually of 28 historical criminals with information from [http://www.thefamouspeople.com/](The Famous People), [www.all-that-is-interesting.com/famous-spies](All That Is Interesting), and [www.wikipedia.com](Wikipedia).
+The game also uses a database compiled by the makers manually of 28 historical criminals with information from [The Famous People](http://www.thefamouspeople.com/), [All That Is Interesting](www.all-that-is-interesting.com/famous-spies), and [Wikipedia](www.wikipedia.com).
 
 #### Created by Naz Khan and Meryl Dakin, 2017, Flatiron School
